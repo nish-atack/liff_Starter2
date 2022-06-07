@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>LIFF Starter</title>
-        <link rel="stylesheet" href="style.css">
+        <?!= HtmlService.createHtmlOutputFromFile('css').getContent(); ?>
     </head>
     <body>
         <div id="liffAppContent">
@@ -15,11 +15,14 @@
                     <button id="closeWindowButton">Close LIFF App</button>
                 </div>
                 <div class="buttonRow">
+                    <button id="scanQrCodeButton">Open QR Code Reader</button>
                     <button id="sendMessageButton">Send Message</button>
-                    <button id="getAccessToken">Get Access Token</button>
                 </div>
                 <div class="buttonRow">
+                    <button id="getAccessToken">Get Access Token</button>
                     <button id="getProfileButton">Get Profile</button>
+                </div>
+                <div class="buttonRow">
                     <button id="shareTargetPicker">Open Share Target Picker</button>
                 </div>
             </div>
@@ -32,6 +35,17 @@
                     <tr>
                         <th>accessToken</th>
                         <td id="accessTokenField"></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- SCAN QR RESULT -->
+            <div id="scanQr" class="hidden textLeft">
+                <h2>QR Code reader</h2>
+                <a href="#" onclick="toggleQrCodeReader()">Close QR Code Reader Result</a>
+                <table>
+                    <tr>
+                        <th>scanCode Result</th>
+                        <td id="scanQrField"></td>
                     </tr>
                 </table>
             </div>
@@ -125,6 +139,7 @@
             <p>Unable to receive the LIFF ID as an environment variable.</p>
         </div>
         <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-        <script src="liff-starter.js"></script>
+        <?!= HtmlService.createHtmlOutputFromFile('js').getContent(); ?>
     </body>
 </html>
+
