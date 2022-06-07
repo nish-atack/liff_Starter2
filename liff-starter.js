@@ -1,7 +1,7 @@
-<script>
+
 window.onload = function() {
-    const useNodeJS = false;   // if you are not using a node server, set this value to false
-    const defaultLiffId = "1657192220-EKGPj8q3";   // change the default LIFF value if you are not using a node server
+    const useNodeJS = true;   // if you are not using a node server, set this value to false
+    const defaultLiffId = "1657196041-vDWabr0g";   // change the default LIFF value if you are not using a node server
 
     // DO NOT CHANGE THIS
     let myLiffId = "";
@@ -138,22 +138,6 @@ function registerButtonHandlers() {
         }
     });
 
-    // scanCode call
-    document.getElementById('scanQrCodeButton').addEventListener('click', function() {
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
-            liff.scanCode().then(result => {
-                // e.g. result = { value: "Hello LIFF app!" }
-                const stringifiedResult = JSON.stringify(result);
-                document.getElementById('scanQrField').textContent = stringifiedResult;
-                toggleQrCodeReader();
-            }).catch(err => {
-                document.getElementById('scanQrField').textContent = "scanCode failed!";
-            });
-        }
-    });
-
     // get access token
     document.getElementById('getAccessToken').addEventListener('click', function() {
         if (!liff.isLoggedIn() && !liff.isInClient()) {
@@ -197,7 +181,7 @@ function registerButtonHandlers() {
             ).catch(function (res) {
                 document.getElementById('shareTargetPickerMessage').textContent = "Failed to launch share target picker.";
             });
-        }
+        } 
     });
 
     // login call, only when external browser is used
@@ -258,4 +242,4 @@ function toggleElement(elementId) {
     }
 }
 
-</script>
+
